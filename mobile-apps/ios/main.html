@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html manifest="cache.manifest">
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -11,15 +12,18 @@
     <title>iOS</title>
     <link rel="apple-touch-icon"
           href="../img/student_icon.png" />
+<!-- 320*460
+    <link rel="apple-touch-startup-image"
+          href="./startup.png" />-->
 </head>
-<body ontouchmove="BlockMove(event);" >
-hello
-</body>
-
 <script>
     function BlockMove(event) {
         // Tell Safari not to move the window.
         event.preventDefault() ;
     }
 </script>
+
+<body ontouchmove="BlockMove(event);" >
+hello
+</body>
 </html>
