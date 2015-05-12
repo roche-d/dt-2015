@@ -60,7 +60,7 @@ i.garago-icon {
 .login-screen-title i.garago-icon {
     height: 80px;
     width: 80px;
-    margin-top: 100px;
+    margin-top: 90px;
 }
 
 .login-screen-content {
@@ -75,7 +75,8 @@ i.garago-icon {
 }
 
 .login-screen-content p {
-    font-size: 0.35em;
+    font-size: 0.45em;
+    margin-top: 0;
 }
 
 .login-screen-content .item-input input {
