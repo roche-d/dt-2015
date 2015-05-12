@@ -51,21 +51,22 @@ i.garago-icon-only {
 
 i.garago-icon {
     background-size: contain;
-    background-image: url("../img/logo-name.png");
+    background-image: url("../img/logo-only-white.png");
     background-repeat: no-repeat;
     display: inline-block;
 
 }
 
 .login-screen-title i.garago-icon {
-    height: 50px;
-    width: 180px;
+    height: 80px;
+    width: 80px;
     margin-top: 100px;
 }
 
 .login-screen-content {
     background-color: #ed1a44;
     color:white;
+    font-family: AvenirMedium;
 }
 
 .login-screen-content h2 {
@@ -75,4 +76,13 @@ i.garago-icon {
 
 .login-screen-content p {
     font-size: 0.35em;
+}
+
+.login-screen-content .item-input input {
+    background-color: white;
+    border-radius: 10px;
+}
+
+.login-screen-content .list-block-label {
+    color:white;
 }

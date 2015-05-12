@@ -48,5 +48,10 @@ function garagoRun() {
     if (!logged) {
         console.log('not logged');
         myApp.loginScreen();
+
+        $$('.insurance-connect').on('click', function () {
+            console.log('closed login');
+            myApp.closeModal('.login-screen');
+        });
     }
 };
