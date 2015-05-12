@@ -40,6 +40,54 @@
 <!-- Panels overlay-->
 <div class="panel-overlay"></div>
 
+<div class="login-screen">
+    <!-- Default view-page layout -->
+    <div class="view">
+        <div class="page">
+            <!-- page-content has additional login-screen content -->
+            <div class="page-content login-screen-content">
+                <div class="login-screen-title">
+                    <i class="garago-icon"></i>
+                    <h2>Welcome</h2>
+                    <p>Please login to our service</p>
+                </div>
+                <!-- Login form -->
+                <form>
+                    <div class="list-block">
+                        <ul>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">Username</div>
+                                    <div class="item-input">
+                                        <input type="text" name="username" placeholder="Username">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">Password</div>
+                                    <div class="item-input">
+                                        <input type="password" name="password" placeholder="Password">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="list-block">
+                        <ul>
+                            <li>
+                                <a href="#" class="item-link list-button">Sign In</a>
+                            </li>
+                        </ul>
+                        <div class="list-block-labe">Some text with login information.</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="views">
 
     <div class="view view-main">
@@ -85,6 +133,19 @@
                 <p>Right panel content goes here</p>
             </div>
         </div>-->
+
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <p>Page content goes here</p>
+                    <!-- Link to another page -->
+                    <a href="about.html">About app</a>
+                </div>
+            </div>
+        </div>
 
     </div>
 
