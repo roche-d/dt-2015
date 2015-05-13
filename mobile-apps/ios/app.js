@@ -53,7 +53,9 @@ function garagoRun() {
             console.log('closed login');
             myApp.closeModal('.login-screen');
             mainView.router.load({pageName: 'info'});
-            warnInternet();
+            //warnInternet();
         });
+    } else {
+        mainView.router.load({pageName: 'info'});
     }
 };

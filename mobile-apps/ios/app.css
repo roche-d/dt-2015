@@ -129,3 +129,35 @@ i.garago-arrow {
 .login-screen-content .button {
     color: white;
 }
+
+
+/* INFOS SCREEN */
+.garago-page-info {
+
+}
+
+.garago-page-info .header-box {
+    height: 70px;
+    background-color: #2a2d34;
+}
+
+.garago-page-info .header-picture {
+    width: 95px;
+    height: 95px;
+    margin: 0 auto;
+    border: solid #97a7ad;
+    border-radius: 70px;
+    margin-top: -47px;
+    background-size: cover;
+    background-image: url("../img/profile-picture.png");
+    background-repeat: no-repeat;
+    //display: inline-block;
+}
+
+.garago-page-info .header-text {
+    text-align: center;
+}
+
+.garago-page-info .garago-infos {
+    margin: 0;
+}
