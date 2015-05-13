@@ -72,11 +72,13 @@ i.garago-icon {
 .login-screen-content h2 {
     font-size: 0.75em;
     margin: 0 auto;
+    text-shadow: 0 2px rgba(0, 0, 0, 0.15);
 }
 
 .login-screen-content p {
     font-size: 0.45em;
     margin-top: 0;
+    text-shadow: 0 2px rgba(0, 0, 0, 0.15);
 }
 
 .login-screen-content .item-input input {
@@ -86,4 +88,13 @@ i.garago-icon {
 
 .login-screen-content .list-block-label {
     color:white;
+}
+
+.login-screen-content .buttons-non-client {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.login-screen-content .non-client-label {
+    margin-bottom: 0;
 }
