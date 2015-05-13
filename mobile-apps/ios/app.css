@@ -98,3 +98,7 @@ i.garago-icon {
 .login-screen-content .non-client-label {
     margin-bottom: 0;
 }
+
+.login-screen-content .item-inner:after {
+    background-color: transparent;
+}
