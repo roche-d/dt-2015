@@ -16,7 +16,7 @@ var mainView = myApp.addView('.view-main', {
 });
 
 myApp.onPageInit('view-main', function (page) {
-
+    console.log('coucou');
 });
 
 myApp.onPageInit('*', function (page) {
@@ -41,6 +41,18 @@ function warnInternet() {
     });
 };
 
+myApp.onPageInit('info', function (page) {
+    $$('.garago-page-info .next-step').on('click', function () {
+        console.log('plop');
+        mainView.router.load({pageName: 'index'});
+        //mainView.router.back({});
+    });
+});
+
+function garagoInfosPage() {
+    mainView.router.load({pageName: 'info'});
+};
+
 function garagoRun() {
 
     var logged = false;
@@ -52,10 +64,10 @@ function garagoRun() {
         $$('.insurance-connect').on('click', function () {
             console.log('closed login');
             myApp.closeModal('.login-screen');
-            mainView.router.load({pageName: 'info'});
+            garagoInfosPage();
             //warnInternet();
         });
     } else {
-        mainView.router.load({pageName: 'info'});
+        garagoInfosPage();
     }
 };

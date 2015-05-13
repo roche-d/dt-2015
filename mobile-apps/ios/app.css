@@ -64,6 +64,13 @@ i.garago-arrow {
     display: inline-block;
 }
 
+i.garago-arrow-red {
+    background-size: contain;
+    background-image: url("../img/arrow-red-shadow.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
 
  /* LOGIN SCREEN */
 .login-screen-title i.garago-icon {
@@ -160,4 +167,21 @@ i.garago-arrow {
 
 .garago-page-info .garago-infos {
     margin: 0;
+}
+
+.garago-page-info .garago-arrow-red {
+    height: 30px;
+    width: 30px;
+    margin: 0 auto;
+    display: block;
+    margin-top: 10px;
+}
+
+.garago-page-info p.name {
+    margin: 0;
+    margin-top: 5px;
+}
+
+.garago-page-info h2 {
+    margin: 10px 0;
 }
