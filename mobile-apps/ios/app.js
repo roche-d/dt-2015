@@ -41,7 +41,6 @@ function warnInternet() {
 };
 
 function garagoRun() {
-    warnInternet();
 
     var logged = false;
 
@@ -52,6 +51,7 @@ function garagoRun() {
         $$('.insurance-connect').on('click', function () {
             console.log('closed login');
             myApp.closeModal('.login-screen');
+            warnInternet();
         });
     }
 };

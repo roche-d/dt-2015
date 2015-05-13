@@ -57,10 +57,12 @@ i.garago-icon {
 
 }
 
+
+ /* LOGIN SCREEN */
 .login-screen-title i.garago-icon {
     height: 80px;
     width: 80px;
-    margin-top: 90px;
+    margin-top: 70px;
 }
 
 .login-screen-content {
@@ -85,6 +87,7 @@ i.garago-icon {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 2px rgba(0, 0, 0, 0.15);
+    font-size: 0.8em;
 }
 
 .login-screen-content .list-block-label {
