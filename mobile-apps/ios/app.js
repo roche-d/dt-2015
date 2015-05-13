@@ -11,7 +11,8 @@ var $$ = Dom7;
 // Add view
 var mainView = myApp.addView('.view-main', {
     // Because we want to use dynamic navbar, we need to enable it for this view:
-    dynamicNavbar: true
+    dynamicNavbar: true,
+    domCache: true
 });
 
 myApp.onPageInit('view-main', function (page) {
@@ -30,7 +31,7 @@ function warnInternet() {
         title: 'Garago',
         subtitle: 'New message from the Team',
         message: 'Please remember that this application needs an Internet connection !',
-        media: '<img width="44" height="44" style="border-radius:100%" src="http://lorempixel.com/output/people-q-c-100-100-9.jpg">',
+        media: '<img width="44" height="44" style="border-radius:100%" src="../img/logo-only.png">',
         onClose: function () {
             //myApp.alert('Notification closed');
         },
@@ -51,6 +52,7 @@ function garagoRun() {
         $$('.insurance-connect').on('click', function () {
             console.log('closed login');
             myApp.closeModal('.login-screen');
+            mainView.router.load({pageName: 'info'});
             warnInternet();
         });
     }
