@@ -51,7 +51,7 @@ i.garago-icon-only {
 
 i.garago-icon {
     background-size: contain;
-    background-image: url("../img/logo-only-white.png");
+    background-image: url("../img/logo-only-white-shadow.png");
     background-repeat: no-repeat;
     display: inline-block;
 
@@ -84,6 +84,7 @@ i.garago-icon {
 .login-screen-content .item-input input {
     background-color: white;
     border-radius: 10px;
+    box-shadow: 0 2px rgba(0, 0, 0, 0.15);
 }
 
 .login-screen-content .list-block-label {
