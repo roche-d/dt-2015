@@ -71,6 +71,34 @@ i.icon-claim {
     display: inline-block;
 }
 
+i.icon-timeline {
+    background-size: contain;
+    background-image: url("../img/picto-timeline.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+i.icon-offers {
+    background-size: contain;
+    background-image: url("../img/picto-offers.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+i.icon-more-info {
+    background-size: contain;
+    background-image: url("../img/picto-more-infos.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+i.icon-blue-add {
+    background-size: contain;
+    background-image: url("../img/picto-blue-add.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
 
  /* LOGIN SCREEN */
 .login-screen-title i.garago-icon {
@@ -240,33 +268,33 @@ i.icon-claim {
     font-weight: 100;
 }
 
-.garago-page-index .menu-container {
+.menu-container {
     margin-top: 40px;
 }
 
-.garago-page-index .menu-element {
+.menu-element {
     display: flex;
     display: -webkit-flex;
     margin: 0;
     padding: 5px 0;
 }
 
-.garago-page-index .menu-element:active {
+.menu-element:active {
     background-color: #97a7ad;
 }
 
-.garago-page-index .menu-element-icon {
+.menu-element-icon {
     margin: 0 15px;
 }
 
-.garago-page-index .menu-element-text {
+.menu-element-text {
     width: 70%;
     line-height: 35px;
     font-family: AvenirMedium;
     font-size: 1.3em;
 }
 
-.garago-page-index .menu-element-arrow {
+.menu-element-arrow {
     width: 9px;
     //height: 30px;
     background-position-y: 9px;
@@ -289,4 +317,38 @@ i.icon-claim {
     background-repeat: no-repeat;
     display: block;
     margin: 18px auto;
+}
+
+
+/* Page Repairs */
+
+.garago-page-repair .header-box {
+    height: 70px;
+    background-color: #2a2d34;
+}
+
+.garago-page-repair i {
+    width: 30px;
+    height: 30px;
+}
+
+.garago-page-repair h2 {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.garago-page-repair .status {
+    text-align: center;
+    margin: 0;
+    color: #97a7ad;
+    font-style: italic;
+    font-weight: 100;
+}
+
+.garago-page-repair i.icon-blue-add {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    bottom: 40px;
+    left: calc(50% - 30px);
 }
