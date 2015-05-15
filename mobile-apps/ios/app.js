@@ -47,6 +47,37 @@
         console.log('coucou');
     });
 
+    myApp.onPageInit('new-request', function (page) {
+        initGeolocation();
+    });
+
+
+    function initGeolocation() {
+        console.log('init geoloc');
+        var successGeoloc = function (position) {
+            var myLatlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            var map_options = {
+                zoom: 12,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map_container = document.getElementById('map');
+            console.log(map_container);
+            //map_container.css('width', '100%');
+            //map_container.css('height', '100px');
+            var map = new google.maps.Map(map_container, map_options);
+        };
+        var failGeoloc = function () {
+            console.log('failed geoloc');
+        };
+
+        if (navigator && navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(successGeoloc, failGeoloc);
+        } else {
+            console.log('Geolocation is not supported');
+        }
+    };
+
 
     garagoRun();
 

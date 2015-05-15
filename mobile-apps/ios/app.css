@@ -361,3 +361,8 @@ i.icon-blue-add {
 .garago-page-new-request .list-block .item-inner:after {
     background-color: transparent;
 }
+
+.garago-page-new-request #map {
+    width: 100%;
+    height: 200px;
+}
