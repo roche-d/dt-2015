@@ -246,6 +246,7 @@ i.icon-claim {
 
 .garago-page-index .menu-element {
     display: flex;
+    display: -webkit-flex;
     margin: 10px 0;
 }
 
