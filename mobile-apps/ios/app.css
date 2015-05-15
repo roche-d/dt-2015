@@ -175,6 +175,7 @@ i.garago-arrow-red {
     margin: 0 auto;
     display: block;
     margin-top: 10px;
+    transform: rotate(180deg);
 }
 
 .garago-page-info p.name {
@@ -184,4 +185,31 @@ i.garago-arrow-red {
 
 .garago-page-info h2 {
     margin: 10px 0;
+}
+
+/* LOADING SCREEN */
+.popup-overlay.modal-overlay-visible {
+    opacity: 0;
+}
+
+.popup-loading {
+    background-color: #ed1a44;
+}
+
+.popup-loading .content-block {
+    color:white;
+    font-family: AvenirMedium;
+}
+
+.popup-loading #loading-animation {
+    display: block;
+    margin: 0 auto;
+    width: 35%;
+    margin-top: 240px;
+}
+
+.popup-loading p {
+    width: 65%;
+    margin: 40px auto;
+    text-align: center;
 }

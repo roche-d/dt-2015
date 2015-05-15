@@ -44,8 +44,8 @@ function warnInternet() {
 myApp.onPageInit('info', function (page) {
     $$('.garago-page-info .next-step').on('click', function () {
         console.log('plop');
-        mainView.router.load({pageName: 'index'});
-        //mainView.router.back({});
+        //mainView.router.load({pageName: 'index'});
+        mainView.router.back({});
     });
 });
 
@@ -53,21 +53,29 @@ function garagoInfosPage() {
     mainView.router.load({pageName: 'info'});
 };
 
+function loadingPage(cb) {
+    myApp.popup('.popup-loading');
+    setTimeout(function () {
+        myApp.closeModal('.popup-loading');
+        cb();
+    }, 2000);
+}
+
 function garagoRun() {
 
-    var logged = false;
+    var logged = true;
 
     if (!logged) {
         console.log('not logged');
         myApp.loginScreen();
 
         $$('.insurance-connect').on('click', function () {
-            console.log('closed login');
             myApp.closeModal('.login-screen');
-            garagoInfosPage();
-            //warnInternet();
+            loadingPage(garagoInfosPage);
         });
     } else {
-        garagoInfosPage();
+        loadingPage(function () {
+            //mainView.router.load({pageName: 'index'});
+        });
     }
 };
