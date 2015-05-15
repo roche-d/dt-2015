@@ -58,8 +58,16 @@ function loadingPage(cb) {
     setTimeout(function () {
         myApp.closeModal('.popup-loading');
         cb();
-    }, 2000);
+    }, 800);
 }
+
+function garagoMenuPage() {
+    $$('#car-manager').on('click', function () {
+        loadingPage(function () {
+           mainView.router.load({pageName: 'car-manager'});
+        });
+    });
+};
 
 function garagoRun() {
 
@@ -74,6 +82,7 @@ function garagoRun() {
             loadingPage(garagoInfosPage);
         });
     } else {
+        garagoMenuPage();
         return ;
         loadingPage(function () {
             //mainView.router.load({pageName: 'index'});
