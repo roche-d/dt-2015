@@ -67,6 +67,30 @@ function garagoMenuPage() {
            mainView.router.load({pageName: 'car-manager'});
         });
     });
+
+    $$('#repairs').on('click', function () {
+        loadingPage(function () {
+            mainView.router.load({pageName: 'repair'});
+        });
+    });
+
+    $$('#deals').on('click', function () {
+        loadingPage(function () {
+            mainView.router.load({pageName: 'deals'});
+        });
+    });
+
+    $$('#knowledge-center').on('click', function () {
+        loadingPage(function () {
+            mainView.router.load({pageName: 'knowledge-center'});
+        });
+    });
+
+    $$('#claim').on('click', function () {
+        loadingPage(function () {
+            mainView.router.load({pageName: 'claim'});
+        });
+    });
 };
 
 function garagoRun() {
