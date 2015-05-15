@@ -247,7 +247,12 @@ i.icon-claim {
 .garago-page-index .menu-element {
     display: flex;
     display: -webkit-flex;
-    margin: 10px 0;
+    margin: 0;
+    padding: 5px 0;
+}
+
+.garago-page-index .menu-element:active {
+    background-color: #97a7ad;
 }
 
 .garago-page-index .menu-element-icon {
@@ -277,7 +282,7 @@ i.icon-claim {
 }
 
 .phone-emergency {
-    width: 60px;
+    width: 61px;
     height: 60px;
     background-size: contain;
     background-image: url("../img/phone-emergency.png");
