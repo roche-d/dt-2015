@@ -275,3 +275,13 @@ i.icon-claim {
     width: 30px;
     height: 30px;
 }
+
+.phone-emergency {
+    width: 60px;
+    height: 60px;
+    background-size: contain;
+    background-image: url("../img/phone-emergency.png");
+    background-repeat: no-repeat;
+    display: block;
+    margin: 35px auto;
+}
