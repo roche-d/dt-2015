@@ -121,7 +121,7 @@
 
     function garagoRun() {
 
-        var logged = true;
+        var logged = false;
 
         if (!logged) {
             console.log('not logged');
