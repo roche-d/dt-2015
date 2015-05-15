@@ -74,6 +74,7 @@ function garagoRun() {
             loadingPage(garagoInfosPage);
         });
     } else {
+        return ;
         loadingPage(function () {
             //mainView.router.load({pageName: 'index'});
         });
