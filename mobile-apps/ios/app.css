@@ -203,7 +203,7 @@ i.icon-blue-add {
     margin: 0 auto;
     display: block;
     margin-top: 10px;
-    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
 }
 
 .garago-page-info p.name {

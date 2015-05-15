@@ -154,6 +154,13 @@
                 <div class="center sliding">Claim</div>
             </div>
 
+            <div data-page="new-request" class="navbar-inner cached">
+                <div class="left sliding">
+                    <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+                </div>
+                <div class="center sliding">New Request</div>
+            </div>
+
 
         </div>
 
@@ -232,7 +239,7 @@
                     <div class="garago-page-repair">
                         <div class="header-box"></div>
                         <div class="current-repair-container"></div>
-                        <a href="#"><i class="icon-blue-add"></i></a>
+                        <a href="#new-request"><i class="icon-blue-add"></i></a>
                     </div>
                 </div>
             </div>
@@ -345,6 +352,13 @@
                 </div>
             </div>
 
+            <div data-page="new-request" class="page cached">
+                <div class="page-content">
+                    <p>Page content goes here</p>
+                    <!-- Link to another page -->
+                </div>
+            </div>
+
         </div>
 
     </div>
@@ -352,6 +366,7 @@
 </div>
 
 <script type="text/template7" id="currentRepair">
+    {{#if title}}
     <h2>{{title}}</h2>
     <p class="status">{{status}}</p>
 
@@ -372,6 +387,9 @@
             <div class="menu-element-arrow"></div>
         </div>
     </div>
+    {{else}}
+    <p class="status">No awaiting repair request.</p>
+    {{/if}}
 </script>
 
 

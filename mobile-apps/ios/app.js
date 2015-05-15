@@ -41,6 +41,8 @@
             status: 'waiting for confirmation',
             offerCount: 0
         };
+        rep = {};
+        console.log(myApp.template7Data);
         $$('.page[data-page="repair"] .current-repair-container').html(T7.templates.currentRepair(rep));
         console.log('coucou');
     });
@@ -121,7 +123,7 @@
 
     function garagoRun() {
 
-        var logged = false;
+        var logged = true;
 
         if (!logged) {
             console.log('not logged');
