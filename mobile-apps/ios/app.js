@@ -91,7 +91,7 @@
         $$('#car-manager').on('click', function () {
             loadingPage(function () {
                 mainView.router.load({pageName: 'car-manager'});
-            }, 200);
+            }, 2000);
         });
 
         $$('#repairs').on('click', function () {
@@ -129,7 +129,10 @@
 
             $$('.insurance-connect').on('click', function () {
                 myApp.closeModal('.login-screen');
-                loadingPage(garagoInfosPage);
+                loadingPage(function () {
+                    garagoMenuPage();
+                    garagoInfosPage();
+                }, 1200);
             });
         } else {
             garagoMenuPage();
