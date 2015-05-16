@@ -69,6 +69,8 @@
         initGeolocation();
         $$('.form-new-request-send').on('click', function () {
             console.log('I should send all');
+            myApp.alert(' OK !', 'Incomplete form');
+            return;
             var inputData = $$("input:checked[name='repair-what'");
             console.log(inputData.length);
             var obj = {
