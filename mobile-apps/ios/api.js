@@ -7,7 +7,7 @@
 
     //"http://127.0.0.1:8080"
 
-    var prod = false;
+    var prod = true;
 
     var GaragoApi = {
         url: (prod) ? ("http://garago.cleverapps.io") : ("http://127.0.0.1:8080"),
