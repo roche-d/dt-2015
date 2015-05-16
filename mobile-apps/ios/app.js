@@ -49,6 +49,27 @@
 
     myApp.onPageInit('new-request', function (page) {
         initGeolocation();
+        $$('.form-new-request-send').on('click', function () {
+            console.log('I should send all');
+            var inputData = $$("input:checked[name='repair-what'");
+            console.log(inputData.length);
+            var obj = {
+                what: [],
+                courtesyCar: false,
+                when: {}
+            };
+            $$("input:checked[name='repair-what'").each(function () {
+                obj.what.push(this.value);
+            });
+            if ($$("input:checked[name='repair-courtesy'").length > 0) {
+                obj.courtesyCar = true;
+            }
+            $$("input[type='date'").each(function () {
+                obj.when[this.name] = this.value;
+            });
+            console.log(inputData);
+            console.log(obj);
+        });
     });
 
 
@@ -62,10 +83,20 @@
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             var map_container = document.getElementById('map');
-            console.log(map_container);
-            //map_container.css('width', '100%');
-            //map_container.css('height', '100px');
             var map = new google.maps.Map(map_container, map_options);
+            var geocoder = new google.maps.Geocoder();
+            var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            geocoder.geocode({'latLng': latlng}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results[2]) {
+                        $$('#map-address')[0].value = results[2].formatted_address;
+                    } else {
+                        //alert('No results found');
+                    }
+                } else {
+                    //alert('Geocoder failed due to: ' + status);
+                }
+            });
         };
         var failGeoloc = function () {
             console.log('failed geoloc');

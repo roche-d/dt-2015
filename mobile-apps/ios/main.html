@@ -159,6 +159,7 @@
                     <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
                 </div>
                 <div class="center sliding">New Request</div>
+                <div class="right sliding"><a href="#" class="link form-new-request-send">Send</a></div>
             </div>
 
 
@@ -355,7 +356,7 @@
             <div data-page="new-request" class="page cached">
                 <div class="page-content">
                     <div class="garago-page-new-request">
-                        <form>
+                        <form id="form-new-request" name="form-new-request">
 
                         <div class="list-block accordion-list">
                             <ul>
@@ -683,6 +684,20 @@
                                     <div class="accordion-item-content">
                                         <div class="content-block">
                                             <div id="map"></div>
+                                            <div class="list-block">
+                                                <ul>
+                                                    <li>
+                                                        <div class="item-content">
+                                                            <div class="item-inner">
+                                                                <div class="item-title label">Location</div>
+                                                                <div class="item-input">
+                                                                    <input name="where" type="text" placeholder="City, zipcode" id="map-address">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
@@ -725,7 +740,7 @@
                                                             <div class="item-inner">
                                                                 <div class="item-title label">From</div>
                                                                 <div class="item-input">
-                                                                    <input type="date" placeholder="Date from">
+                                                                    <input type="date" placeholder="Date from" name="date-from">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -735,7 +750,7 @@
                                                             <div class="item-inner">
                                                                 <div class="item-title label">To</div>
                                                                 <div class="item-input">
-                                                                    <input type="date" placeholder="Date to">
+                                                                    <input type="date" placeholder="Date to" name="date-to">
                                                                 </div>
                                                             </div>
                                                         </div>
