@@ -7,7 +7,7 @@
      title: 'Brakes Check'
      }*/
 
-(function (Framework7, $$, T7) {
+(function (Framework7, $$, T7, GaragoApi) {
     'use strict';
 
     // Initialize app
@@ -18,6 +18,7 @@
     var Garago = {
         curReq: {},
         logged: true,
+        api: GaragoApi,
         setCurrentRequest: function (inputData) {
             var me = this;
             me.curReq = {
@@ -27,6 +28,11 @@
             };
         }
     };
+
+    Garago.api.login('4242', function(data) {
+        console.log('success to log online, contract : ' + data.contract);
+    }, function () {});
+    //console.log(Garago.api);
 
 // Add view
     var mainView = myApp.addView('.view-main', {
@@ -241,4 +247,4 @@
         }
     };
 
-} (Framework7, Dom7, Template7));
+} (Framework7, Dom7, Template7, GaragoApi));
