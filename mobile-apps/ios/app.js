@@ -29,9 +29,17 @@
         }
     };
 
-    Garago.api.login('4242', function(data) {
-        console.log('success to log online, contract : ' + data.contract);
-    }, function () {});
+    if(typeof(Storage) !== "undefined") {
+        if (localStorage && localStorage.contractNumber && localStorage.contractNumber.length > 0) {
+            Garago.logged = true;
+            Garago.contract = localStorage.contractNumber;
+        } else {
+            Garago.logged = false;
+        }
+    } else {
+        myApp.alert('Impossible to save data on your device !', 'No saving possible');
+    }
+
     //console.log(Garago.api);
 
 // Add view
@@ -232,11 +240,21 @@
             myApp.loginScreen();
 
             $$('.insurance-connect').on('click', function () {
-                myApp.closeModal('.login-screen');
-                loadingPage(function () {
-                    garagoMenuPage();
-                    garagoInfosPage();
-                }, 1200);
+                var textNumber = $$("input[name='cnumber']")[0].value;
+                if (!(textNumber && textNumber.length > 0)) return;
+                Garago.api.login(textNumber, function(data) {
+                    console.log('success to log online, contract : ' + data.contract);
+                    if (localStorage) {
+                        localStorage.contractNumber = data.contract;
+                    }
+                    myApp.closeModal('.login-screen');
+                    loadingPage(function () {
+                        garagoMenuPage();
+                        garagoInfosPage();
+                    }, 1200);
+                }, function (err) {
+                    myApp.alert('Please check your connection and try again', 'Impossible to log in');
+                });
             });
         } else {
             garagoMenuPage();
