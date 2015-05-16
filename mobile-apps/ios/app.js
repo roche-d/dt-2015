@@ -69,7 +69,6 @@
         initGeolocation();
         $$('.form-new-request-send').on('click', function () {
             console.log('I should send all');
-            myApp.alert(' OK !', 'Incomplete form');
 
             var inputData = $$("input:checked[name='repair-what']");
             myApp.alert(' OK input !', 'Incomplete form');
@@ -79,17 +78,17 @@
                 when: {},
                 where: ''
             };
-            $$("input:checked[name='repair-what'").each(function () {
+            $$("input:checked[name='repair-what']").each(function () {
                 obj.what.push(this.value);
             });
             if (obj.what.length <= 0) {
                 myApp.alert('Nothing to repair !', 'Incomplete form');
                 return ;
             }
-            if ($$("input:checked[name='repair-courtesy'").length > 0) {
+            if ($$("input:checked[name='repair-courtesy']").length > 0) {
                 obj.courtesyCar = true;
             }
-            $$("input[type='date'").each(function () {
+            $$("input[type='date']").each(function () {
                 obj.when[this.name] = this.value;
             });
             obj.where = $$('#map-address')[0].value;
