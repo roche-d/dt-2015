@@ -15,6 +15,18 @@
         template7Pages: true,
         precompileTemplates: true
     });
+    var Garago = {
+        curReq: {},
+        logged: true,
+        setCurrentRequest: function (inputData) {
+            var me = this;
+            me.curReq = {
+                title: inputData.what[0],
+                status: 'waiting for offers',
+                offerCount: 0
+            };
+        }
+    };
 
 // Add view
     var mainView = myApp.addView('.view-main', {
@@ -35,19 +47,25 @@
         console.log('coucou');
     });
 
-    myApp.onPageInit('repair', function (page) {
-        var rep = {
-            title: 'Grosse rep',
-            status: 'waiting for confirmation',
-            offerCount: 0
-        };
-        rep = {};
+
+    /* REPAIRS PAGE */
+    function repairLoadData(page) {
+        var rep = Garago.curReq;
         console.log(myApp.template7Data);
         $$('.page[data-page="repair"] .current-repair-container').html(T7.templates.currentRepair(rep));
-        console.log('coucou');
+    };
+
+    myApp.onPageInit('repair', function (page) {
+       repairLoadData(page);
+    });
+    myApp.onPageReinit('repair', function (page) {
+        repairLoadData(page);
     });
 
+
+    /* NEW REQUEST */
     myApp.onPageInit('new-request', function (page) {
+        // TODO: add popup for GPS loading
         initGeolocation();
         $$('.form-new-request-send').on('click', function () {
             console.log('I should send all');
@@ -56,19 +74,34 @@
             var obj = {
                 what: [],
                 courtesyCar: false,
-                when: {}
+                when: {},
+                where: ''
             };
             $$("input:checked[name='repair-what'").each(function () {
                 obj.what.push(this.value);
             });
+            if (obj.what.length <= 0) {
+                myApp.alert('Nothing to repair !', 'Incomplete form');
+                return ;
+            }
             if ($$("input:checked[name='repair-courtesy'").length > 0) {
                 obj.courtesyCar = true;
             }
             $$("input[type='date'").each(function () {
                 obj.when[this.name] = this.value;
             });
+            obj.where = $$('#map-address')[0].value;
+            if ($$("textarea[name='details-text']")[0].value) {
+                obj.details = $$("textarea[name='details-text']")[0].value;
+            }
+
+            Garago.setCurrentRequest(obj);
             console.log(inputData);
             console.log(obj);
+            mainView.refreshPreviousPage();
+            mainView.router.back({
+                //reloadPrevious: true
+            });
         });
     });
 
@@ -185,7 +218,7 @@
 
     function garagoRun() {
 
-        var logged = true;
+        var logged = Garago.logged;
 
         if (!logged) {
             console.log('not logged');
