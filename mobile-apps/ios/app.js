@@ -71,7 +71,7 @@
             console.log('I should send all');
             myApp.alert(' OK !', 'Incomplete form');
 
-            var inputData = $$("input:checked[name='repair-what'");
+            var inputData = $$("input:checked[name='repair-what']");
             myApp.alert(' OK input !', 'Incomplete form');
             var obj = {
                 what: [],
