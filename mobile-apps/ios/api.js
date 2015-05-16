@@ -7,8 +7,10 @@
 
     //"http://127.0.0.1:8080"
 
+    var prod = false;
+
     var GaragoApi = {
-        url: "http://garago.cleverapps.io",
+        url: (prod) ? ("http://garago.cleverapps.io") : ("http://127.0.0.1:8080"),
         login: function (contract, success, error) {
             $$.post(this.url + '/api/login', {contract: contract}, function (data) {
                 data = JSON.parse(data);

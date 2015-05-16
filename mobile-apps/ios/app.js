@@ -10,6 +10,21 @@
 (function (Framework7, $$, T7, GaragoApi) {
     'use strict';
 
+    function warnInternet() {
+        myApp.addNotification({
+            title: 'Garago',
+            subtitle: 'New message from the Team',
+            message: 'Please remember that this application needs an Internet connection !',
+            media: '<img width="44" height="44" style="border-radius:100%" src="../img/logo-only.png">',
+            onClose: function () {
+                //myApp.alert('Notification closed');
+            },
+            onClick: function () {
+                console.log('click');
+            }
+        });
+    }
+
     // Initialize app
     var myApp = new Framework7({
         template7Pages: true,
@@ -17,30 +32,12 @@
     });
     var Garago = {
         curReq: {},
-        logged: true,
+        logged: false,
         api: GaragoApi,
         setCurrentRequest: function (inputData) {
             var me = this;
-            me.curReq = {
-                title: inputData.what[0],
-                status: 'waiting for offers',
-                offerCount: 0
-            };
         }
     };
-
-    if(typeof(Storage) !== "undefined") {
-        if (localStorage && localStorage.contractNumber && localStorage.contractNumber.length > 0) {
-            Garago.logged = true;
-            Garago.contract = localStorage.contractNumber;
-        } else {
-            Garago.logged = false;
-        }
-    } else {
-        myApp.alert('Impossible to save data on your device !', 'No saving possible');
-    }
-
-    //console.log(Garago.api);
 
 // Add view
     var mainView = myApp.addView('.view-main', {
@@ -58,15 +55,38 @@
     });
 
     myApp.onPageInit('car-manager', function (page) {
-        console.log('coucou');
+        //console.log('car manager ?')
+    });
+
+    myApp.onPageInit('info', function (page) {
+        $$(".field-contract-number")[0].innerHTML = Garago.contract;
     });
 
 
     /* REPAIRS PAGE */
     function repairLoadData(page) {
-        var rep = Garago.curReq;
-        console.log(myApp.template7Data);
-        $$('.page[data-page="repair"] .current-repair-container').html(T7.templates.currentRepair(rep));
+        console.log('load data ' + Garago.contract);
+        Garago.api.getCurrentRequest(Garago.contract, function (data) {
+            console.log('req ok');
+            Garago.curReq = data.req;
+            $$('.page[data-page="repair"] .current-repair-container').html(T7.templates.currentRepair(data.req));
+            console.log('req ok');
+            console.log(data);
+
+            $$('#repair-more-information').on('click', function () {
+                console.log(data.req);
+                mainView.router.load({
+                    template: Template7.templates.moreInfo,
+                    context: data.req
+                });
+            });
+        }, function (err) {
+            Garago.curReq = {};
+            console.log('impossible to get the current req ' + err.msg);
+        });
+
+        //var rep = Garago.curReq;
+        //console.log(myApp.template7Data);
     };
 
     myApp.onPageInit('repair', function (page) {
@@ -82,10 +102,9 @@
         // TODO: add popup for GPS loading
         initGeolocation();
         $$('.form-new-request-send').on('click', function () {
-            console.log('I should send all');
 
             var inputData = $$("input:checked[name='repair-what']");
-            myApp.alert(' OK input !', 'Incomplete form');
+
             var obj = {
                 what: [],
                 courtesyCar: false,
@@ -110,17 +129,22 @@
                 obj.details = $$("textarea[name='details-text']")[0].value;
             }
 
-            Garago.setCurrentRequest(obj);
-            console.log(inputData);
-            console.log(obj);
-            mainView.refreshPreviousPage();
-            mainView.router.back({
-                //reloadPrevious: true
+            myApp.popup('.popup-loading');
+            Garago.api.pushRequest(Garago.contract, JSON.stringify(obj), function (data) {
+
+                mainView.refreshPreviousPage();
+                myApp.closeModal('.popup-loading');
+                mainView.router.back({});
+
+            }, function (err) {
+                myApp.closeModal('.popup-loading');
+                myApp.alert('There was a communication failure with the server, please try again.', 'Error');
             });
         });
     });
 
 
+    /* GEOLOCATION */
     function initGeolocation() {
         console.log('init geoloc');
         var successGeoloc = function (position) {
@@ -157,24 +181,6 @@
         }
     };
 
-
-    garagoRun();
-
-    function warnInternet() {
-        myApp.addNotification({
-            title: 'Garago',
-            subtitle: 'New message from the Team',
-            message: 'Please remember that this application needs an Internet connection !',
-            media: '<img width="44" height="44" style="border-radius:100%" src="../img/logo-only.png">',
-            onClose: function () {
-                //myApp.alert('Notification closed');
-            },
-            onClick: function () {
-                console.log('click');
-            }
-        });
-    };
-
     myApp.onPageInit('info', function (page) {
         $$('.garago-page-info .next-step').on('click', function () {
             console.log('plop');
@@ -185,7 +191,7 @@
 
     function garagoInfosPage() {
         mainView.router.load({pageName: 'info'});
-    };
+    }
 
     function loadingPage(cb, loading) {
         if (loading) {
@@ -231,6 +237,25 @@
         });
     };
 
+    /* LOCAL STORAGE */
+    if(typeof(Storage) !== "undefined") {
+        if (localStorage && localStorage.contractNumber && localStorage.contractNumber.length > 0) {
+            Garago.api.login(localStorage.contractNumber, function (data) {
+                Garago.logged = true;
+                Garago.contract = data.contract;
+                garagoRun();
+            }, function (err) {
+
+            });
+        } else {
+            Garago.logged = false;
+            garagoRun();
+        }
+    } else {
+        myApp.alert('Impossible to save data on your device !', 'No saving possible');
+    }
+
+    /* MAIN ENTRY POINT */
     function garagoRun() {
 
         var logged = Garago.logged;
@@ -239,10 +264,12 @@
             console.log('not logged');
             myApp.loginScreen();
 
+            /* CONNECTION TO SERVER */
             $$('.insurance-connect').on('click', function () {
                 var textNumber = $$("input[name='cnumber']")[0].value;
                 if (!(textNumber && textNumber.length > 0)) return;
                 Garago.api.login(textNumber, function(data) {
+                    Garago.contract = data.contract;
                     console.log('success to log online, contract : ' + data.contract);
                     if (localStorage) {
                         localStorage.contractNumber = data.contract;
@@ -258,11 +285,7 @@
             });
         } else {
             garagoMenuPage();
-            return ;
-            loadingPage(function () {
-                //mainView.router.load({pageName: 'index'});
-            });
         }
-    };
+    }
 
 } (Framework7, Dom7, Template7, GaragoApi));

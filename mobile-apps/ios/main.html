@@ -287,7 +287,7 @@
                                             <div class="label">Contract Number</div>
                                         </div>
                                         <div class="item-title">
-                                            <div class="field">ZF54</div>
+                                            <div class="field field-contract-number">ZF54</div>
                                         </div>
                                     </div>
                                 </li>
@@ -808,12 +808,38 @@
 
 </div>
 
+<script type="text/template7" id="moreInfo">
+    <div data-page="moreInfo" class="page cached">
+        <div class="page-content">
+            <div class="garago-page-more-information">
+            <h2>{{title}}</h2>
+                {{#if data.what}}
+                <div class="content-block">
+                    <div class="list-block">
+                        <ul>
+
+                {{#each data.what}}
+                <li class="item-content">
+                    <div class="item-inner">
+                    {{this}}
+                    </div>
+                </li>
+                {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</script>
+
 <script type="text/template7" id="currentRepair">
     {{#if title}}
     <h2>{{title}}</h2>
     <p class="status">{{status}}</p>
 
-    <div class="menu-container">
+    <div class="menu-container"> <!-- {"title":"plop"} -->
         <div class="menu-element" id="repair-more-information">
             <div class="menu-element-icon"><i class="icon-more-info"></i></div>
             <div class="menu-element-text">More information</div>
