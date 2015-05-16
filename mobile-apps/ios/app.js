@@ -72,14 +72,13 @@
             myApp.alert(' OK !', 'Incomplete form');
 
             var inputData = $$("input:checked[name='repair-what'");
-            console.log(inputData.length);
+            myApp.alert(' OK input !', 'Incomplete form');
             var obj = {
                 what: [],
                 courtesyCar: false,
                 when: {},
                 where: ''
             };
-            myApp.alert(' OK !', 'Incomplete form');
             $$("input:checked[name='repair-what'").each(function () {
                 obj.what.push(this.value);
             });
