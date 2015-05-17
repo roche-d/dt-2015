@@ -99,6 +99,34 @@ i.icon-blue-add {
     display: inline-block;
 }
 
+i.icon-needs {
+    background-size: contain;
+    background-image: url("../img/picto-needs-blue.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+i.icon-map-marker {
+    background-size: contain;
+    background-image: url("../img/picto-map-marker-blue.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+i.icon-courtesy-car {
+    background-size: contain;
+    background-image: url("../img/picto-car-blue.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+i.icon-dates-calendar {
+    background-size: contain;
+    background-image: url("../img/picto-calendar-blue.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
 
  /* LOGIN SCREEN */
 .login-screen-title i.garago-icon {
@@ -365,4 +393,40 @@ i.icon-blue-add {
 .garago-page-new-request #map {
     width: 100%;
     height: 200px;
+}
+
+/* Page more info */
+.garago-page-more-information {
+
+}
+
+.garago-page-more-information h2 {
+    text-align: center;
+}
+
+.garago-page-more-information .info-header {
+    padding-left: 15px;
+    line-height: 44px;
+    height: 44px;
+
+}
+
+.garago-page-more-information .info-header i {
+    width: 15px;
+    height: 15px;
+}
+
+.garago-page-more-information .info-header span {
+    font-family: AvenirMedium;
+    color: #1ebfd0;
+    margin-left: 10px;
+    font-size: initial;
+}
+
+.garago-page-more-information .item-content {
+    margin-left: 26px;
+}
+
+.garago-page-more-information .content-block, .garago-page-more-information .list-block {
+    margin: 0;
 }
