@@ -102,7 +102,7 @@
         // TODO: add popup for GPS loading
         initGeolocation();
         $$('.form-new-request-send').on('click', function () {
-
+            myApp.popup('.popup-loading');
             var inputData = $$("input:checked[name='repair-what']");
 
             var obj = {
@@ -116,6 +116,7 @@
             });
             if (obj.what.length <= 0) {
                 myApp.alert('Nothing to repair !', 'Incomplete form');
+                myApp.closeModal('.popup-loading');
                 return ;
             }
             if ($$("input:checked[name='repair-courtesy']").length > 0) {
@@ -129,7 +130,7 @@
                 obj.details = $$("textarea[name='details-text']")[0].value;
             }
 
-            myApp.popup('.popup-loading');
+
             Garago.api.pushRequest(Garago.contract, JSON.stringify(obj), function (data) {
 
                 mainView.refreshPreviousPage();
