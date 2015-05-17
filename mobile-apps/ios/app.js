@@ -39,6 +39,8 @@
         }
     };
 
+    myApp.popup('.popup-loading');
+
 // Add view
     var mainView = myApp.addView('.view-main', {
         // Because we want to use dynamic navbar, we need to enable it for this view:
@@ -260,6 +262,7 @@
     function garagoRun() {
 
         var logged = Garago.logged;
+        myApp.closeModal('.popup-loading');
 
         if (!logged) {
             console.log('not logged');
