@@ -2,10 +2,6 @@
  * Created by roche_d on 11/05/15.
  */
 
-    /*template7Data: {
-     'page:repair': {
-     title: 'Brakes Check'
-     }*/
 
 (function (Framework7, $$, T7, GaragoApi) {
     'use strict';
@@ -15,6 +11,20 @@
             title: 'Garago',
             subtitle: 'New message from the Team',
             message: 'Please remember that this application needs an Internet connection !',
+            media: '<img width="44" height="44" style="border-radius:100%" src="../img/logo-only.png">',
+            onClose: function () {
+                //myApp.alert('Notification closed');
+            },
+            onClick: function () {
+                console.log('click');
+            }
+        });
+    }
+    function notifNewOffer() {
+        myApp.addNotification({
+            title: 'Garago',
+            subtitle: 'New offer from a Garage',
+            message: 'You can check it out if the repair menu',
             media: '<img width="44" height="44" style="border-radius:100%" src="../img/logo-only.png">',
             onClose: function () {
                 //myApp.alert('Notification closed');
@@ -36,7 +46,8 @@
         api: GaragoApi,
         setCurrentRequest: function (inputData) {
             var me = this;
-        }
+        },
+        intervaller: undefined
     };
 
     myApp.popup('.popup-loading');
@@ -68,13 +79,40 @@
     /* REPAIRS PAGE */
     function repairLoadData(page) {
         console.log('load data ' + Garago.contract);
+        var count;
+        if (Garago.curReq && Garago.curReq.offerCount) {
+            count = Garago.curReq.offerCount;
+        }
+        console.log(Garago.curReq.offerCount);
+
         Garago.api.getCurrentRequest(Garago.contract, function (data) {
-            console.log('req ok');
+            if (data.req.offerCount) {
+                console.log('new count');
+                console.log(data.req.offerCount);
+                if (!count || (count < data.req.offerCount)) notifNewOffer();
+            }
+
             Garago.curReq = data.req;
             $$('.page[data-page="repair"] .current-repair-container').html(T7.templates.currentRepair(data.req));
             console.log('req ok');
             console.log(data);
 
+            if (data && data.req && data.req.data) {
+
+                if (!Garago.intervaller) {
+                    console.log('can set a timer');
+                    Garago.intervaller = setInterval(function () {
+                        repairLoadData();
+                    }, 5000);
+                }
+            } else {
+                if (Garago.intervaller) {
+                    clearInterval(Garago.intervaller);
+                }
+            }
+
+
+            /* MORE INFO */
             $$('#repair-more-information').on('click', function () {
                 console.log(data.req);
                 mainView.router.load({
@@ -82,6 +120,16 @@
                     context: data.req
                 });
             });
+
+            /* OFFERS */
+            $$('#repair-offers').on('click', function () {
+                console.log(data.req);
+                mainView.router.load({
+                    template: Template7.templates.offers,
+                    context: data.req
+                });
+            });
+
         }, function (err) {
             Garago.curReq = {};
             console.log('impossible to get the current req ' + err.msg);

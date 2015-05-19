@@ -430,3 +430,20 @@ i.icon-dates-calendar {
 .garago-page-more-information .content-block, .garago-page-more-information .list-block {
     margin: 0;
 }
+
+/* Offers */
+.garago-page-offers {
+
+}
+
+.garago-page-offers .content-block {
+    padding: 0;
+}
+
+.garago-page-offers .description {
+    font-size: smaller;
+}
+
+.garago-page-offers .menu-element-arrow {
+    height: 35px;
+}
