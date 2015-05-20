@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Cache manifest version 0.0.1
+# Cache manifest version 0.0.6
 
 ../img/app-icon.png
 ../img/arrow-black.png
@@ -27,9 +27,22 @@ CACHE MANIFEST
 ../img/startup.png
 ../img/startup-iphone-5.png
 ../img/student_icon.png
+../fonts/Avenir-Medium.otf
+../img/picto-blue-add.png
+./bower_components/framework7/dist/css/framework7.min.css
+
 
 NETWORK:
 api.js
 app.js
 app.css
 main.html
+http://maps.googleapis.com/
+bower_components/framework7/dist/js/framework7.min.js
+http://maps.gstatic.com/
+http://garago.cleverapps.io/
+http://csi.gstatic.com/
+http://fonts.googleapis.com/
+http://mt0.googleapis.com/
+http://mt1.googleapis.com/
+http://*.googleapis.com/
