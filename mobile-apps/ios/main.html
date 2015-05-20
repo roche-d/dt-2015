@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!--<html manifest="cache.manifest">-->
-<html>
+<html manifest="cache.manifest">
+<!--<html>-->
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="apple-mobile-web-app-capable"
@@ -226,7 +226,7 @@
                             </div>
                         </div>
 
-                        <div class="phone-emergency"></div>
+                        <a href="tel:+33629720186"><div class="phone-emergency"></div></a>
                     </div>
                     <!-- Link to another page -->
                 </div>
@@ -815,6 +815,16 @@
 
 </div>
 
+<script type="text/template7" id="offer-detail">
+<div data-page="offer-detail" class="page cached">
+    <div class="garago-page-offer-details">
+        <div class="content-block">
+            {{this.garage}}
+        </div>
+    </div>
+</div>
+</script>
+
 <script type="text/template7" id="offers">
 <div data-page="offers" class="page cached">
     <div class="page-content">
@@ -823,19 +833,21 @@
                 <div class="list-block">
                     <ul>
                         {{#each offers}}
-                        <li class="item-content">
-                            <div class="item-inner">
-                            <div class="garage"> {{this.garage}}
-                            </div>
+                        <a href="" data-context-name="{{this}}">
+                            <li class="item-content">
+                                <div class="item-inner repair-offer-details">
+                                    <div class="garage"> {{this.garage}}
+                                    </div>
 
-                            <div class="garage-rating-{{this.rating}}"></div>
-                            <div class="description">
-                                <p>Cost approx: {{this.price}}€<br />
-                                Repair possible on {{this.date}}</p>
-                            </div>
-                            <div class="menu-element-arrow"></div>
-                            </div>
-                        </li>
+                                    <div class="garage-rating-{{this.rating}}"></div>
+                                    <div class="description">
+                                        <p>Cost approx: {{this.price}}€<br />
+                                            Repair possible on {{this.date}}</p>
+                                    </div>
+                                    <div class="menu-element-arrow"></div>
+                                </div>
+                            </li>
+                        </a>
                         {{/each}}
                     </ul>
                 </div>

@@ -146,6 +146,18 @@
         repairLoadData(page);
     });
 
+    /* OFFERS PAGE */
+    myApp.onPageInit('offers', function (page) {
+        $$('.repair-offer-details').on('click', function () {
+            console.log(this);
+            /*console.log(data.req);
+            mainView.router.load({
+                template: Template7.templates.offerDetail,
+                context: data.req
+            });
+             */
+        });
+    });
 
     /* NEW REQUEST */
     myApp.onPageInit('new-request', function (page) {
